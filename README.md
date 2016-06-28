@@ -1,5 +1,9 @@
 # nagioslogserver-netfilter
 
+## Sample dashboard
+
+[Netfilter dashboard](images/netfilter_dashboard.png)
+
 ## Installation
 
 This guide assumes your netfilter logs are being already ingested by Nagios Log Server, and have some of these fields:
@@ -26,6 +30,15 @@ yum install GeoIP GeoIP-GeoLite-data GeoIP-GeoLite-data-extra
 ** CentOS 7.x
 ```
 yum install GeoIP GeoIP-update
+```
+
+## How it works
+
+Basic logstash filter first tries to extract relevant data from netfilter messages, then uses geoip function to add location data. Optionally `cidr` function from `logstash-filter-cidr` plugin can be used to add tags when a given source and/or destination match specific network ranges. We use it to tag our networks, and then filters & queries can be easily written to match those networks.
+
+Example query:
+```
+("nf_SRC_net_mynet1" OR "nf_SRC_mynet2)
 ```
 
 
