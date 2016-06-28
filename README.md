@@ -2,7 +2,7 @@
 
 ## Sample dashboard
 
-[Netfilter dashboard](images/netfilter_dashboard.png)
+![Netfilter dashboard](images/netfilter_dashboard.png)
 
 ## Installation
 
