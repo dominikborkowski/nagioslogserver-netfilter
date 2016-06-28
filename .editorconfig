@@ -1,0 +1,38 @@
+# This file is for unifying the coding style for different editors and IDEs.
+# More information at http://EditorConfig.org
+
+# No .editorconfig files above the root directory
+root = true
+
+# Global options
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Two spaces for these files
+[*.{html,js,rb,css,scss,xml,yml}]
+indent_size = 2
+
+[Gemfile*]
+indent_size = 2
+
+[Rakefile]
+indent_size = 2
+
+# Four spaces for these files
+[*.{py,md,rst,sh,c,h}]
+indent_style = space
+indent_size = 4
+
+# Never trim white spaces in Markdown files
+[*.md]
+trim_trailing_whitespace = false
+
+# Use tabs for makefiles
+[Makefile]
+indent_style = tab
+indent_size = 8
