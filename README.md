@@ -2,7 +2,15 @@
 
 ## Installation
 
-### Optional
+This guide assumes your netfilter logs are being already ingested by Nagios Log Server, and have some of these fields:
+```
+[19333126.907670] SFW2-INext-ACC IN=eth0 OUT= MAC=a4:ba:db:0c:22:57:00:1b:2b:90:fc:c3:08:00 SRC=1.2.3.4 DST=3.2.4.1 LEN=60 TOS=0x00 PREC=0x00 TTL=63 ID=52253 DF PROTO=TCP SPT=56288 DPT=5666 WINDOW=29200 RES=0x00 SYN URGP=0 OPT (020405B40402080A65D439FA0000000001030307)
+```
+
+* Create new filter with the content of [50-netfilter.conf](logstash.d/50-netfilter.conf)
+* Create new dashboard with the content of [netfilter_dashboard.json](dashboards/netfilter_dashboard.json)
+
+### Optional components
 
 * Install `logstash-filter-cidr` plugin:
 ```
@@ -21,15 +29,17 @@ yum install GeoIP GeoIP-update
 ```
 
 
+## Testing & Troubleshooting
 
-## Testing
+Nagios Log Server has logstash configured to log to `/var/log/logstash/logstash.log`.
 
+### Testing from CLI
 
 Using command line:
 
 * run logstash from CLI
 ```
-/usr/logstash --config logstash.d/
+/usr/local/nagioslogserver/logstash/bin/logstash --config logstash.d/
 ```
 
 * paste sample log message
